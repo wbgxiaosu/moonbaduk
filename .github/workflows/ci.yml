@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        backend: [wasm, wasm-gc, native]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install MoonBit toolchain
+        run: |
+          curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash
+          echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
+
+      - name: moon check
+        run: moon check --target ${{ matrix.backend }}
+
+      - name: moon test
+        run: moon test --target ${{ matrix.backend }}
