@@ -2,3 +2,5 @@ target/
 .mooncakes/
 *.core
 build/
+test_out.txt
+chk.txt
