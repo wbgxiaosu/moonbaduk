@@ -1,0 +1,7 @@
+import {
+  "wbgxiaosu/moonbaduk",
+  "wbgxiaosu/moonbaduk/sgf",
+  "wbgxiaosu/moonbaduk/gtp",
+}
+
+pkgtype(kind: "executable")
